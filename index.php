@@ -1,18 +1,16 @@
-
+<?php 
+ session_start();
+ if (!isset($_SESSION['user'])) {
+ 	header("Location: connexion.html");
+ }
+?>
 <html>
 	<head>
 		<link rel="stylesheet" href="plugins/bootstrap/4.3.1/css/bootstrap.min.css">
 	</head>
 	<body>
-			
 		
-
 		<?php 
-
-
-
-
-
 		$servername = "localhost";
 		$username = "root";
 		$password = "";

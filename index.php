@@ -9,7 +9,17 @@
 		<link rel="stylesheet" href="plugins/bootstrap/4.3.1/css/bootstrap.min.css">
 	</head>
 	<body>
-		
+		<table id="listProduit">
+			<thead>
+					<tr>
+					<th>ID</th>
+					<th>NOM</th>
+					<th>LIBELLE</th>
+					<th>PRIX</th>
+					<th>ACTION</th>
+					<tr>
+					</thead>
+					<tbody>
 		<?php 
 		$servername = "localhost";
 		$username = "root";
@@ -40,15 +50,7 @@
 
 
 						mysqli_close($conn);
-
-					echo "<table>";
-					echo "<tr>";
-					echo "<th>ID</th>";
-					echo "<th>NOM</th>";
-					echo "<th>LIBELLE</th>";
-					echo "<th>PRIX</th>";
-					echo "<th>ACTION</th>";
-					echo "<tr>";
+					
 
 				while ($row =$query->fetch_assoc()) {
 					echo '<tr>';
@@ -59,9 +61,8 @@
 					echo '<td><a href="edit.php?id='.$row['idP'].'">Editer</a><td>';
 					echo '<td><a class="delete" data-id="'.$row["idP"].'" href="#">Delete</a><td>';
 					echo '</tr>';
-				}
-				echo "<table>";
 
+				}
 
 			} catch (PDOExeption $e) {
 				echo "connection failed". $e->getMessage();
@@ -69,6 +70,9 @@
 
 
 			?>
+
+					</tbody>
+		</table>
 		<!-- Button to Open the Modal -->
 	<div class="container">
 		  <h2>Modal Example</h2>
@@ -107,11 +111,12 @@
 	
 
 	<script type="text/javascript" src="plugins/jquery/3.3.1/jquery.min.js"></script>
-	<script type="text/javascript" src="plugins/popper/1.14.7/umd/popper.min.js"></script>
+	<!-- <script type="text/javascript" src="plugins/popper/1.14.7/umd/popper.min.js"></script> -->
 	<script type="text/javascript" src="plugins/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-	
+	<script type="text/javascript" src="plugins/DataTables/datatables.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
+			$("#listProduit").DataTable();
 			 $(".delete").click(function(){
 			 	let idRow = $(this).data('id');
 			    $("#myModal").modal("show");

@@ -4,7 +4,6 @@
         if (!isset($_SESSION['user'])) {
             header("Location: connexion.php");
         }
-
 ?>
 <html>
     <head>
@@ -39,9 +38,6 @@
                 } catch(PDOExeption $e) {
                     echo "connection failed". $e->getMessage();
                 }
-                    
-            
-
          ?>
     </body>
 </html>
